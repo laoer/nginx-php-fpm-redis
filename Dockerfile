@@ -16,12 +16,16 @@ apt-get clean && rm -rf /var/lib/apt/lists/* && \
 apt-get update && \
 apt-get install -y software-properties-common && \
 apt-get install -y python-software-properties && \
+add-apt-repository ppa:webupd8team/y-ppa-manager && \
+apt-get update && \
+apt-get install -y y-ppa-manager && \
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C && \
 nginx=stable && \
 add-apt-repository ppa:nginx/$nginx && \
 add-apt-repository ppa:ondrej/php5-5.6 && \
 apt-get update && \
 apt-get upgrade -y && \
-BUILD_PACKAGES="supervisor nginx php5-fpm git php5-mysql php-apc php5-curl php5-gd php5-intl php5-mcrypt php5-memcache php5-sqlite php5-tidy php5-xmlrpc php5-xsl php5-pgsql php5-mongo php5-ldap pwgen redis-server" && \
+BUILD_PACKAGES="supervisor nginx redis-server php5-fpm git php5-mysql php-apc php5-curl php5-gd php5-intl php5-mcrypt php5-memcache php5-sqlite php5-tidy php5-xmlrpc php5-xsl php5-pgsql php5-mongo php5-ldap php5-redis pwgen" && \
 apt-get -y install $BUILD_PACKAGES && \
 apt-get remove --purge -y software-properties-common && \
 apt-get autoremove -y && \
