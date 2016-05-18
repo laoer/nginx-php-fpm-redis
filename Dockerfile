@@ -11,8 +11,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Update base image
 # Add sources for latest nginx
 # Install software requirements
-RUN rm /var/lib/apt/lists/* -vf && \
-apt-get clean && \
+RUN sed -i "s/archive.ubuntu.com/mirrors.163.com" /etc/apt/sources.list && \
 apt-get update && \
 apt-get install -y software-properties-common && \
 nginx=stable && \
